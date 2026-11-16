@@ -1,0 +1,1445 @@
+/* =========================================================
+   SPECIMEN LAB
+========================================================= */
+
+
+.lab-body {
+  word-break: keep-all;
+  --lab-bg: #111111;
+  --lab-panel: #161616;
+  --lab-panel-dark: #0d0d0d;
+
+  --lab-fg: #f1f1ed;
+
+  --lab-line:
+    rgba(255, 255, 255, 0.34);
+
+  --lab-line-soft:
+    rgba(255, 255, 255, 0.14);
+
+  width: 100%;
+  height: 100vh;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  background:
+    var(--lab-bg);
+
+  color:
+    var(--lab-fg);
+}
+
+
+.lab-body * {
+  box-sizing: border-box;
+}
+
+
+.lab-body button,
+.lab-body input {
+  font: inherit;
+}
+
+
+.lab-body button {
+  border: 0;
+
+  background: none;
+
+  color: inherit;
+}
+
+
+.lab-body a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.lab-body .lab {
+  --lab-padding: 16px;
+  --lab-header-height: 80px;
+  --lab-footer-height: 76px;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  padding: var(--lab-padding);
+
+  display: grid;
+
+  grid-template-rows:
+    var(--lab-header-height)
+    minmax(0, 1fr)
+    var(--lab-footer-height);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.lab-body .lab-header {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    var(--lab-line);
+}
+
+
+.lab-body .lab-header-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  font-size: 16px;
+}
+
+
+.lab-body .lab-logo {
+  font-weight: 700;
+}
+
+
+.lab-body .lab-header-left > span {
+  opacity: 0.5;
+}
+
+
+.lab-body .lab-system-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 12px;
+}
+
+
+.lab-body .status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background:
+    var(--lab-fg);
+}
+
+
+.lab-body .status-dot.off {
+  opacity: 0.2;
+}
+
+
+.lab-body .lab-header-right {
+  justify-self: end;
+
+  display: flex;
+
+  gap: 7px;
+}
+
+
+.lab-body .lab-header-button {
+  min-height: 44px;
+
+  padding:
+    0 11px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--lab-line);
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+.lab-body .lab-header-button:hover {
+  background:
+    var(--lab-fg);
+
+  color:
+    var(--lab-bg);
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.lab-body .lab-interface {
+  min-width: 0;
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    180px
+    minmax(0, 1fr)
+    230px;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.lab-body .lab-toolbar {
+  min-height: 0;
+  overflow-y: auto;
+
+  padding-right: 14px;
+
+  border-right:
+    1px solid
+    var(--lab-line);
+}
+
+
+.lab-body .toolbar-title {
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  font-size: 10px;
+
+  opacity: 0.5;
+}
+
+
+.lab-body .tool-list {
+  border-top:
+    1px solid
+    var(--lab-line-soft);
+}
+
+
+.lab-body .lab-tool {
+  width: 100%;
+
+  min-height: 82px;
+
+  padding:
+    13px 10px;
+
+  display: grid;
+
+  grid-template-columns:
+    34px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  border-bottom:
+    1px solid
+    var(--lab-line-soft);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.lab-body .lab-tool:hover:not(:disabled):not(.active) {
+  background:
+    rgba(255, 255, 255, 0.055);
+}
+
+
+.lab-body .lab-tool.active {
+  background:
+    var(--lab-fg);
+
+  color:
+    var(--lab-bg);
+}
+
+
+.lab-body .lab-tool:disabled {
+  opacity: 0.18;
+
+  cursor: default;
+}
+
+
+.lab-body .tool-index {
+  align-self: start;
+
+  font-size: 10px;
+
+  opacity: 0.6;
+}
+
+
+.lab-body .tool-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.lab-body .tool-text strong {
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+
+.lab-body .tool-text small {
+  font-size: 12px;
+
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   WORKSPACE
+========================================================= */
+
+.lab-body .workspace {
+  --workspace-top: 140px;
+  --workspace-bottom: 50px;
+  --capture-action-gap: 18px;
+  --capture-action-height: 44px;
+  /* Keep a square preview within both the available width and height. */
+  --capture-size: min(100%, calc(
+    100dvh - var(--lab-padding) - var(--lab-padding)
+    - var(--lab-header-height) - var(--lab-footer-height)
+    - var(--workspace-top) - var(--workspace-bottom)
+    - var(--capture-action-gap) - var(--capture-action-height)
+  ));
+
+  position: relative;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    var(--workspace-top)
+    40px
+    var(--workspace-bottom);
+
+  background:
+    var(--lab-panel);
+}
+
+
+.lab-body .workspace-grid {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity: 0.36;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    40px
+    40px;
+}
+
+
+/* =========================================================
+   COORDINATES
+========================================================= */
+
+.lab-body .workspace-coordinate {
+  position: absolute;
+
+  z-index: 20;
+
+  top: calc(var(--workspace-top) - 26px);
+
+  font-size: 10px;
+  pointer-events: none;
+}
+
+
+.lab-body .coordinate-top-left {
+  left: 24px;
+}
+
+
+.lab-body .coordinate-top-right {
+  right: 24px;
+}
+
+
+/* =========================================================
+   CAPTURE AREA
+========================================================= */
+
+.lab-body .capture-area {
+  position: relative;
+
+  z-index: 2;
+
+  width: var(--capture-size);
+  height: auto;
+  aspect-ratio: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  flex: none;
+
+  overflow: hidden;
+
+  background:
+    var(--lab-panel-dark);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.42);
+}
+
+
+/* =========================================================
+   CAMERA / CANVAS
+========================================================= */
+
+.lab-body #camera,
+.lab-body #specimenCanvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+.lab-body #camera {
+  z-index: 1;
+
+  display: none;
+
+  transform:
+    scaleX(-1);
+
+  filter:
+    grayscale(1)
+    contrast(1.08);
+}
+
+
+.lab-body #camera.is-active {
+  display: block;
+}
+
+
+.lab-body #specimenCanvas {
+  z-index: 1;
+
+  display: none;
+
+  touch-action: none;
+}
+
+
+.lab-body #specimenCanvas.is-active {
+  display: block;
+}
+
+
+/* =========================================================
+   CAMERA PLACEHOLDER
+========================================================= */
+
+.lab-body .camera-placeholder {
+  position: absolute;
+
+  z-index: 3;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+
+  transform: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 0;
+
+  background: transparent;
+
+  text-align: center;
+}
+
+
+.lab-body .camera-placeholder.is-hidden {
+  display: none;
+}
+
+
+.lab-body .camera-placeholder span,
+.lab-body .camera-placeholder small {
+  font-size: 12px;
+
+  opacity: 0.48;
+}
+
+
+.lab-body .camera-placeholder strong {
+  font-size: 20px;
+  color: rgb(9, 255, 0);
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   CORNER GUIDE
+========================================================= */
+
+.lab-body .capture-corners {
+  position: absolute;
+
+  z-index: 5;
+
+  inset: 26px;
+
+  pointer-events: none;
+}
+
+
+.lab-body .capture-corners i {
+  position: absolute;
+
+  width: 48px;
+  height: 48px;
+}
+
+
+.lab-body .capture-corners i:nth-child(1) {
+  top: 0;
+  left: 0;
+
+  border-top:
+    2px solid
+    var(--lab-fg);
+
+  border-left:
+    2px solid
+    var(--lab-fg);
+}
+
+
+.lab-body .capture-corners i:nth-child(2) {
+  top: 0;
+  right: 0;
+
+  border-top:
+    2px solid
+    var(--lab-fg);
+
+  border-right:
+    2px solid
+    var(--lab-fg);
+}
+
+
+.lab-body .capture-corners i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+
+  border-bottom:
+    2px solid
+    var(--lab-fg);
+
+  border-left:
+    2px solid
+    var(--lab-fg);
+}
+
+
+.lab-body .capture-corners i:nth-child(4) {
+  right: 0;
+  bottom: 0;
+
+  border-right:
+    2px solid
+    var(--lab-fg);
+
+  border-bottom:
+    2px solid
+    var(--lab-fg);
+}
+
+
+/* =========================================================
+   PLACE SPECIMEN
+========================================================= */
+
+.lab-body .capture-guide {
+  position: absolute;
+
+  z-index: 6;
+
+  left: 50%;
+  bottom: 28px;
+
+  transform:
+    translateX(-50%);
+
+  font-size: 10px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+.lab-body .capture-area.is-captured .capture-guide {
+  display: none;
+}
+
+
+/* =========================================================
+   DETECT LAYER
+========================================================= */
+
+.lab-body .detect-layer {
+  position: absolute;
+
+  z-index: 10;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+/* 하나의 선택 영역 */
+
+.lab-body .detect-region {
+  position: absolute;
+
+  border:
+    1px dashed
+    var(--lab-fg);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  pointer-events: none;
+}
+
+
+/* 현재 드래그 중인 영역 */
+
+.lab-body .detect-region.is-preview {
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+
+/* D01 label */
+
+.lab-body .detect-region-label {
+  position: absolute;
+
+  top: -17px;
+  left: -1px;
+
+  padding:
+    2px 4px;
+
+  background:
+    var(--lab-fg);
+
+  color:
+    var(--lab-bg);
+
+  font-size: 7px;
+
+  line-height: 1;
+
+  letter-spacing: 0.03em;
+}
+
+
+/* =========================================================
+   PIN
+========================================================= */
+
+.lab-body .pin-layer {
+  position: absolute;
+
+  z-index: 11;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.lab-body .canvas-pin {
+  position: absolute;
+
+  width: 12px;
+  height: 12px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border:
+    1px solid
+    var(--lab-fg);
+
+  border-radius: 50%;
+}
+
+
+.lab-body .canvas-pin::before,
+.lab-body .canvas-pin::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    var(--lab-fg);
+}
+
+
+.lab-body .canvas-pin::before {
+  width: 19px;
+  height: 1px;
+}
+
+
+.lab-body .canvas-pin::after {
+  width: 1px;
+  height: 19px;
+}
+
+
+/* =========================================================
+   BRUSH
+========================================================= */
+
+.lab-body .brush-cursor {
+  position: absolute;
+
+  z-index: 15;
+
+  display: none;
+
+  width: 80px;
+  height: 80px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.9);
+
+  border-radius: 50%;
+
+  mix-blend-mode: difference;
+
+  pointer-events: none;
+}
+
+
+.lab-body .brush-cursor.visible {
+  display: block;
+}
+
+
+/* =========================================================
+   CAPTURE ACTION
+========================================================= */
+
+.lab-body .capture-action {
+  position: relative;
+
+  z-index: 4;
+
+  width: var(--capture-size);
+
+  min-width: 0;
+  flex: none;
+
+  margin-top: var(--capture-action-gap);
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 200px);
+
+  gap: 20px;
+
+  align-items: center;
+}
+
+
+.lab-body .capture-status {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.lab-body .capture-status span {
+  font-size: 8px;
+
+  opacity: 0.45;
+}
+
+
+.lab-body .capture-status strong {
+  font-size: 11px;
+
+  font-weight: 400;
+}
+
+
+.lab-body .capture-button {
+  width: 100%;
+  height: var(--capture-action-height);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.8)
+    !important;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+.lab-body .capture-button:hover:not(:disabled) {
+  background:
+    var(--lab-fg);
+
+  color:
+    var(--lab-bg);
+}
+
+
+.lab-body .capture-button:disabled {
+  opacity: 0.22;
+
+  cursor: default;
+}
+
+
+/* =========================================================
+   WORKSPACE BOTTOM
+========================================================= */
+
+.lab-body .workspace-bottom-info {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 24px;
+  bottom: 16px;
+  left: 24px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 8px;
+    opacity: 0.6;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.lab-body .lab-data-panel {
+  min-width: 0;
+  min-height: 0;
+
+  height: 100%;
+
+  padding-left: 15px;
+  padding-right: 8px;
+
+  border-left:
+    1px solid
+    var(--lab-line);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(255, 255, 255, 0.35)
+    transparent;
+}
+
+.lab-body .lab-data-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.lab-body .lab-data-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.lab-body .lab-data-panel::-webkit-scrollbar-thumb {
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  border-radius: 999px;
+}
+
+
+.lab-body .lab-data-panel::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(255, 255, 255, 0.45);
+}
+
+.lab-body .data-section {
+  padding:
+    18px 0;
+
+  border-bottom:
+    1px solid
+    var(--lab-line-soft);
+}
+
+
+.lab-body .data-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 11px;
+
+  opacity: 0.48;
+}
+
+
+.lab-body .active-tool-name {
+  display: block;
+
+  font-size: 20px;
+
+  font-weight: 500;
+}
+
+
+.lab-body .active-tool-description {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  max-width: 190px;
+
+  margin-top: 9px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  opacity: 0.62;
+}
+
+
+/* =========================================================
+   BRUSH SIZE
+========================================================= */
+
+.lab-body .data-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 12px;
+}
+
+
+.lab-body .data-row .data-label {
+  margin: 0;
+}
+
+
+.lab-body #brushSize {
+  width: 100%;
+
+  accent-color:
+    var(--lab-fg);
+}
+
+
+.lab-body .brush-size-preview {
+  height: 78px;
+
+  margin-top: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--lab-line-soft);
+}
+
+
+.lab-body .brush-preview-circle {
+  width: 22px;
+  height: 22px;
+
+  border:
+    1px solid
+    var(--lab-fg);
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   SPECIMEN DATA
+========================================================= */
+
+.lab-body .specimen-data dl {
+  border-top:
+    1px solid
+    var(--lab-line);
+}
+
+
+.lab-body .specimen-data dl > div {
+  padding:
+    7px 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border-bottom:
+    1px solid
+    var(--lab-line-soft);
+
+  font-size: 10px;
+}
+
+
+.lab-body .specimen-data dt {
+  opacity: 0.48;
+}
+
+
+.lab-body .specimen-data dd {
+  min-width: 0;
+  margin: 0;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.lab-body .lab-bottom {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: end;
+
+  gap: 28px;
+
+  align-items: center;
+
+  border-top:
+    1px solid
+    var(--lab-line);
+}
+
+
+.lab-body .workspace .system-message {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 21;
+  padding: 16px 24px;
+  background: var(--lab-panel-dark);
+  border-bottom: 1px solid var(--lab-line-soft);
+}
+
+.lab-body .system-message span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 10px;
+
+  opacity: 0.45;
+}
+
+
+.lab-body .system-message strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.6;
+
+  font-weight: 400;
+}
+
+
+.lab-body .bottom-actions {
+  display: flex;
+
+  gap: 7px;
+}
+
+
+.lab-body .bottom-button {
+  max-width: 240px;
+  line-height: 1.4;
+  min-width: 110px;
+
+  height: 40px;
+
+  padding:
+    0 14px;
+
+  border:
+    1px solid
+    var(--lab-line)
+    !important;
+
+  font-size: 10px;
+
+  cursor: pointer;
+}
+
+
+.lab-body .bottom-button:hover:not(:disabled) {
+  background:
+    var(--lab-fg);
+
+  color:
+    var(--lab-bg);
+}
+
+
+.lab-body .bottom-button:disabled {
+  opacity: 0.18;
+
+  cursor: default;
+}
+
+
+.lab-body .register-button {
+  min-width: 190px;
+
+  border-color:
+    var(--lab-fg)
+    !important;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP / EXHIBITION DISPLAY
+========================================================= */
+
+@media (min-width: 1440px) and (min-height: 800px) {
+  .lab-body .lab {
+    --lab-header-height: 80px;
+    --lab-footer-height: 96px;
+  }
+
+  .lab-body .lab-interface {
+    grid-template-columns:
+      clamp(240px, 12.5vw, 280px)
+      minmax(0, 1fr)
+      clamp(300px, 15.2vw, 340px);
+  }
+
+  .lab-body .lab-toolbar {
+    padding-right: 20px;
+  }
+
+  .lab-body .toolbar-title {
+    height: 60px;
+    font-size: 14px;
+  }
+
+  .lab-body .lab-tool {
+    min-height: 104px;
+    padding: 18px 14px;
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .lab-body .tool-index {
+    font-size: 13px;
+  }
+
+  .lab-body .tool-text strong {
+    font-size: 20px;
+  }
+
+  .lab-body .tool-text small {
+    font-size: 16px;
+  }
+
+  .lab-body .lab-data-panel {
+    padding-left: 24px;
+    padding-right: 14px;
+  }
+
+  .lab-body .data-section {
+    padding: 24px 0;
+  }
+
+  .lab-body .data-label {
+    font-size: 14px;
+  }
+
+  .lab-body .active-tool-name {
+    font-size: 30px;
+  }
+
+
+  .lab-body .active-tool-description {
+    max-width: none;
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .lab-body #brushSizeValue {
+    font-size: 18px;
+  }
+
+  .lab-body .brush-size-preview {
+    height: 96px;
+  }
+
+  .lab-body .specimen-data dl > div {
+    padding: 9px 0;
+    font-size: 13px;
+  }
+
+  .lab-body .lab-header-left {
+    font-size: 20px;
+  }
+
+  .lab-body .lab-system-status,
+  .lab-body .lab-header-button {
+    font-size: 14px;
+  }
+
+  .lab-body .lab-header-button {
+    min-height: 48px;
+    padding: 0 20px;
+  }
+
+  .lab-body .workspace {
+    --capture-action-height: 52px;
+  }
+
+  .lab-body .workspace-coordinate,
+  .lab-body .capture-guide,
+  .lab-body .capture-status span,
+  .lab-body .workspace-bottom-info {
+    font-size: 12px;
+  }
+
+  .lab-body .camera-placeholder span,
+  .lab-body .camera-placeholder small,
+  .lab-body .capture-status strong,
+  .lab-body .capture-button {
+    font-size: 15px;
+  }
+
+  .lab-body .camera-placeholder strong {
+    font-size: 28px;
+  }
+
+  .lab-body .detect-region-label {
+    top: -21px;
+    font-size: 11px;
+  }
+
+  .lab-body .system-message span {
+    font-size: 12px;
+  }
+
+  .lab-body .system-message strong {
+    font-size: 18px;
+  }
+
+  .lab-body .bottom-button {
+    min-width: 120px;
+    height: 48px;
+    font-size: 13px;
+  }
+
+  .lab-body .register-button {
+    min-width: 220px;
+  }
+}
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+@media (pointer: fine) {
+
+  .lab-body,
+  .lab-body a,
+  .lab-body button,
+  .lab-body input {
+    cursor: none;
+  }
+
+
+  .lab-body .glass-neon-cursor {
+    position: fixed;
+
+    z-index: 9999;
+
+    top: 0;
+    left: 0;
+
+    width: 40px;
+    height: 40px;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.7);
+
+    border-radius: 50%;
+
+    background:
+      rgba(255, 255, 255, 0.07);
+
+    backdrop-filter:
+      blur(6px);
+
+    mix-blend-mode:
+      difference;
+
+    pointer-events: none;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+
+  .lab-body .glass-neon-cursor.hover {
+    width: 60px;
+    height: 60px;
+  }
+
+
+  .lab-body .glass-neon-cursor.active {
+    transform:
+      translate(-50%, -50%)
+      scale(0.72);
+  }
+
+}
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPECIMEN ARCHIVE 박제되는 이미지</title>
+  <link rel="stylesheet" href="style.css?v=archive-live-2">
+</head>
+
+<body class="page page-archive">
+  <header class="site-header">
+    <a href="index.html" class="site-logo"><span>표본 아카이브</span><small>SPECIMEN ARCHIVE</small></a>
+
+    <div class="header-meta">
+      <span>GRAPHIC TAXIDERMY SYSTEM</span>
+      <span>나비목 4과. 네 종의 형태와 형질. 네 가지 그래픽 표본</span>
+    </div>
+
+    <button class="menu-button" type="button" aria-label="메뉴 열기">
+      MENU
+    </button>
+  </header>
+
+  <nav class="global-menu" aria-hidden="true">
+    <div class="menu-top">
+      <span>SPECIMEN ARCHIVE</span>
+
+      <button class="menu-close" type="button" aria-label="메뉴 닫기">
+        CLOSE
+      </button>
+    </div>
+
+    <div class="menu-content">
+      <div class="menu-index">
+        INDEX / 04
+      </div>
+
+      <ul class="menu-list">
+<li><a href="index.html"><span>01</span><strong>OVERVIEW</strong></a></li>
+<li><a href="combination.html"><span>02</span><strong>GRAPHIC COLLECTION</strong></a></li>
+<li class="menu-lab"><a href="specimen-lab.html"><span>03</span><strong>SPECIMEN LAB</strong><em>INTERACTIVE ↗</em></a></li>
+<li><a href="archive.html"><span>04</span><strong>SPECIMEN ARCHIVE</strong></a></li>
+</ul>
+    </div>
+  </nav>
+
+
+  <main class="page-main">
+    <section class="page-intro compact">
+      <div class="page-marker"><span>04 표본 아카이브</span><small>SPECIMEN ARCHIVE</small></div>
+
+      <div class="page-intro-main">
+        <p class="eyebrow">저장된 표본 / STORED SPECIMENS</p>
+        <h1>저장된 이미지의 기록<small>SAVED SPECIMENS</small></h1>
+        <div class="archive-intro-copy"><p>하나의 이미지는 선택과 변형의 흔적을 거쳐 새로운 표본이 된다. 이곳에는 Lab에서 저장하거나 인쇄한 이미지가 표본 번호와 함께 쌓인다. 서로 다른 선택이 만든 형질을 나란히 살펴보고, 필요 없는 표본은 기록에서 지울 수 있다.</p><p lang="en">An image becomes a new specimen through traces of selection and transformation. Images saved or printed in the Lab are collected here with specimen numbers. Compare the traits shaped by different choices, and remove specimens you no longer need.</p></div>
+      </div>
+    </section>
+
+    <section class="archive-system">
+      <div class="archive-toolbar">
+        <div class="archive-count">
+          <span>저장된 표본 / SAVED</span>
+          <strong id="archiveCount">0000</strong>
+        </div>
+
+        <div class="archive-filters" role="group" aria-label="표본 필터">
+          <button class="archive-filter active" type="button" data-filter="all">ALL</button>
+          <button class="archive-filter" type="button" data-filter="graphic">GRAPHIC</button>
+          <button class="archive-filter" type="button" data-filter="human">LAB / HUMAN</button>
+        </div>
+
+        <label class="archive-search">
+          <span>SEARCH NO.</span>
+          <input id="archiveSearch" type="search" placeholder="SP-0000" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="archive-grid" id="archiveGrid">
+        <article class="archive-item interactive-card" data-type="insect" data-id="SP-0001"><div class="archive-image media-placeholder">INSECT</div><div><span>SP-0001</span><span>INSECT</span></div></article>
+        <article class="archive-item interactive-card" data-type="graphic" data-id="SP-0002"><div class="archive-image media-placeholder">GRAPHIC</div><div><span>SP-0002</span><span>GRAPHIC</span></div></article>
+        <article class="archive-item interactive-card" data-type="human" data-id="SP-0003"><div class="archive-image media-placeholder">HUMAN</div><div><span>SP-0003</span><span>HUMAN</span></div></article>
+        <article class="archive-item interactive-card" data-type="graphic" data-id="SP-0004"><div class="archive-image media-placeholder">GRAPHIC</div><div><span>SP-0004</span><span>GRAPHIC</span></div></article>
+        <article class="archive-item interactive-card" data-type="insect" data-id="SP-0005"><div class="archive-image media-placeholder">INSECT</div><div><span>SP-0005</span><span>INSECT</span></div></article>
+        <article class="archive-item interactive-card" data-type="human" data-id="SP-0006"><div class="archive-image media-placeholder">HUMAN</div><div><span>SP-0006</span><span>HUMAN</span></div></article>
+        <article class="archive-item interactive-card" data-type="graphic" data-id="SP-0007"><div class="archive-image media-placeholder">GRAPHIC</div><div><span>SP-0007</span><span>GRAPHIC</span></div></article>
+        <article class="archive-item interactive-card" data-type="human" data-id="SP-0008"><div class="archive-image media-placeholder">HUMAN</div><div><span>SP-0008</span><span>HUMAN</span></div></article>
+        <article class="archive-item interactive-card" data-type="insect" data-id="SP-0009"><div class="archive-image media-placeholder">INSECT</div><div><span>SP-0009</span><span>INSECT</span></div></article>
+        <article class="archive-item interactive-card" data-type="graphic" data-id="SP-0010"><div class="archive-image media-placeholder">GRAPHIC</div><div><span>SP-0010</span><span>GRAPHIC</span></div></article>
+        <article class="archive-item interactive-card" data-type="human" data-id="SP-0011"><div class="archive-image media-placeholder">HUMAN</div><div><span>SP-0011</span><span>HUMAN</span></div></article>
+        <article class="archive-item interactive-card" data-type="graphic" data-id="SP-0012"><div class="archive-image media-placeholder">GRAPHIC</div><div><span>SP-0012</span><span>GRAPHIC</span></div></article>
+      </div>
+      <p class="archive-empty" id="archiveEmpty">아직 저장된 표본이 없습니다. Specimen Lab에서 이미지를 저장하거나 인쇄해보세요.<br><small>NO SPECIMENS YET. SAVE OR PRINT AN IMAGE FROM SPECIMEN LAB.</small></p>
+
+      <a href="specimen-lab.html" class="lab-entry interactive-card">
+        <span>INTERACTIVE INSTALLATION</span>
+        <strong>BECOME A SPECIMEN</strong>
+        <span>ENTER SPECIMEN LAB →</span>
+      </a>
+    </section>
+
+  </main>
+
+  <div class="glass-neon-cursor" aria-hidden="true"></div>
+  <script src="script.js?v=archive-live-2"></script>
+
+</body>
+</html>

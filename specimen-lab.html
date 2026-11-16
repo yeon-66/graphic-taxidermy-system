@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    SPECIMEN LAB — 박제
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css?v=nav-3"
+  >
+
+  <link
+    rel="stylesheet"
+    href="specimen-lab.css?v=nav-3"
+  >
+</head>
+
+
+<body class="lab-body">
+
+
+  <main class="lab">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header class="lab-header">
+
+
+      <div class="lab-header-left">
+
+        <a
+          href="index.html"
+          class="lab-logo"
+        >
+          SPECIMEN ARCHIVE
+        </a>
+
+        <span>
+          LAB / 01
+        </span>
+
+      </div>
+
+
+      <div class="lab-system-status">
+
+        <span
+          class="status-dot off"
+          id="statusDot"
+        ></span>
+
+        <span id="systemStatus">
+          SYSTEM READY
+        </span>
+
+      </div>
+
+
+      <div class="lab-header-right">
+
+        <button
+          type="button"
+          id="cameraButton"
+          class="lab-header-button"
+        >
+          ENABLE CAMERA
+        </button>
+
+        <button
+          type="button"
+          id="uploadButton"
+          class="lab-header-button"
+        >
+          UPLOAD IMAGE
+        </button>
+
+        <input
+          type="file"
+          id="imageUploadInput"
+          accept="image/jpeg,image/png,image/webp"
+          aria-label="표본 이미지 업로드"
+          hidden
+        >
+
+        <a href="index.html" class="lab-header-button">EXIT</a>
+
+      </div>
+
+
+    </header>
+
+
+
+    <!-- =====================================
+         MAIN
+    ====================================== -->
+
+    <section class="lab-interface">
+
+
+      <!-- =====================================
+           LEFT TOOLBAR
+      ====================================== -->
+
+      <aside class="lab-toolbar">
+
+
+        <div class="toolbar-title">
+          TOOLS
+        </div>
+
+
+        <div class="tool-list">
+
+
+          <button
+            type="button"
+            class="lab-tool active"
+            data-tool="capture"
+          >
+
+            <span class="tool-index">
+              01
+            </span>
+
+            <div class="tool-text">
+
+              <strong>
+                CAPTURE
+              </strong>
+
+              <small>
+                촬영
+              </small>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            class="lab-tool"
+            data-tool="detect"
+            disabled
+          >
+
+            <span class="tool-index">
+              02
+            </span>
+
+            <div class="tool-text">
+
+              <strong>
+                DETECT
+              </strong>
+
+              <small>
+                인식
+              </small>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            class="lab-tool"
+            data-tool="fix"
+            disabled
+          >
+
+            <span class="tool-index">
+              03
+            </span>
+
+            <div class="tool-text">
+
+              <strong>
+                FIX
+              </strong>
+
+              <small>
+                고정
+              </small>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            class="lab-tool"
+            data-tool="expand"
+            disabled
+          >
+
+            <span class="tool-index">
+              04
+            </span>
+
+            <div class="tool-text">
+
+              <strong>
+                EXPAND
+              </strong>
+
+              <small>
+                전개
+              </small>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            class="lab-tool"
+            data-tool="preserve"
+            disabled
+          >
+
+            <span class="tool-index">
+              05
+            </span>
+
+            <div class="tool-text">
+
+              <strong>
+                PRESERVE
+              </strong>
+
+              <small>
+                보존
+              </small>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            type="button"
+            class="lab-tool"
+            data-tool="trait"
+            disabled
+          >
+
+            <span class="tool-index">
+              06
+            </span>
+
+            <div class="tool-text">
+
+              <strong>
+                TRAIT
+              </strong>
+
+              <small>
+                특이형질
+              </small>
+
+            </div>
+
+          </button>
+
+
+        </div>
+
+
+      </aside>
+
+
+
+      <!-- =====================================
+           WORKSPACE
+      ====================================== -->
+
+      <section class="workspace">
+
+      <div class="system-message" role="status" aria-live="polite" aria-atomic="true">
+
+        <span>
+          작업 안내 / NEXT STEP
+        </span>
+
+        <strong id="labMessage">
+          카메라로 촬영하거나 이미지를 업로드하세요. / Capture or upload an image.
+        </strong>
+
+      </div>
+
+
+        <div class="workspace-grid"></div>
+
+
+        <div class="workspace-coordinate coordinate-top-left">
+
+          X /
+          <span id="trackX">
+            000.00
+          </span>
+
+        </div>
+
+
+        <div class="workspace-coordinate coordinate-top-right">
+
+          Y /
+          <span id="trackY">
+            000.00
+          </span>
+
+        </div>
+
+
+
+        <!-- =====================================
+             CAPTURE / EDIT AREA
+        ====================================== -->
+
+        <div
+          class="capture-area"
+          id="captureArea"
+        >
+
+
+          <video
+            id="camera"
+            autoplay
+            playsinline
+            muted
+          ></video>
+
+
+          <canvas
+            id="specimenCanvas"
+          ></canvas>
+
+
+          <div
+            class="camera-placeholder"
+            id="cameraPlaceholder"
+          >
+
+            <span>
+              SPECIMEN INPUT
+            </span>
+
+            <strong>
+              READY FOR INPUT
+            </strong>
+
+            <small>
+              ENABLE CAMERA OR UPLOAD IMAGE
+            </small>
+
+          </div>
+
+
+          <div class="capture-corners">
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+          </div>
+
+
+          <div class="capture-guide">
+            PLACE SPECIMEN
+          </div>
+
+
+          <!-- MULTIPLE DETECT REGIONS -->
+
+          <div
+            id="detectLayer"
+            class="detect-layer"
+          ></div>
+
+
+          <!-- FIX PINS -->
+
+          <div
+            id="pinLayer"
+            class="pin-layer"
+          ></div>
+
+
+          <!-- BRUSH -->
+
+          <div
+            id="brushCursor"
+            class="brush-cursor"
+          ></div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             CAPTURE BUTTON
+        ====================================== -->
+
+        <div class="capture-action">
+
+
+          <div class="capture-status">
+
+            <span>
+              INPUT STATUS
+            </span>
+
+            <strong id="captureStatus">
+              CAMERA OFF
+            </strong>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="captureButton"
+            class="capture-button"
+            disabled
+          >
+            CAPTURE IMAGE
+          </button>
+
+
+        </div>
+
+
+
+        <div class="workspace-bottom-info">
+
+          <span>
+            MODE /
+            <strong id="canvasMode">
+              LIVE INPUT
+            </strong>
+          </span>
+
+          <span>
+            MONOCHROME CAPTURE
+          </span>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =====================================
+           RIGHT DATA
+      ====================================== -->
+
+      <aside class="lab-data-panel">
+
+
+        <section class="data-section">
+
+          <span class="data-label">
+            ACTIVE TOOL
+          </span>
+
+          <strong
+            id="activeToolName"
+            class="active-tool-name"
+          >
+            CAPTURE
+          </strong>
+
+          <p
+            id="activeToolDescription"
+            class="active-tool-description"
+          >
+            카메라로 촬영하거나 JPG, PNG, WebP 이미지를 업로드합니다.
+          </p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             BRUSH SIZE
+        ====================================== -->
+
+        <section class="data-section">
+
+          <div class="data-row">
+
+            <span class="data-label">
+              BRUSH SIZE
+            </span>
+
+            <output id="brushSizeValue">
+              080
+            </output>
+
+          </div>
+
+
+          <input
+            type="range"
+            id="brushSize"
+            min="20"
+            max="240"
+            value="80"
+          >
+
+
+          <div class="brush-size-preview">
+
+            <div
+              id="brushPreviewCircle"
+              class="brush-preview-circle"
+            ></div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SPECIMEN DATA
+        ====================================== -->
+
+        <section class="data-section specimen-data">
+
+          <span class="data-label">
+            표본 데이터 / SPECIMEN DATA
+          </span>
+
+
+          <dl>
+
+
+            <div>
+              <dt>상태 / STATE</dt>
+
+              <dd id="specimenStateText">
+                실시간 / LIVE
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>도구 / TOOL</dt>
+
+              <dd id="specimenToolText">
+                촬영 / CAPTURE
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>브러시 / BRUSH</dt>
+
+              <dd id="specimenBrushText">
+                080
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>선택 영역 / DETECTED</dt>
+
+              <dd id="detectOperationCount">
+                00
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>고정 / FIX</dt>
+
+              <dd id="fixOperationCount">
+                00
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>전개 / EXPAND</dt>
+
+              <dd id="expandOperationCount">
+                00
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>보존 / PRESERVE</dt>
+
+              <dd id="preserveOperationCount">
+                00
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>특이형질 / TRAIT</dt>
+
+              <dd id="traitOperationCount">
+                00
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>최근 형질 / LAST TRAIT</dt>
+
+              <dd id="lastTraitText">
+                없음 / NONE
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>출력 / OUTPUT</dt>
+
+              <dd>
+                감열 / THERMAL
+              </dd>
+            </div>
+
+
+          </dl>
+
+
+        </section>
+
+
+      </aside>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer class="lab-bottom">
+
+
+
+
+
+      <div class="bottom-actions">
+        <button type="button" id="printButton" class="bottom-button" disabled>표본 출력 / PRINT</button>
+
+
+        <button
+          type="button"
+          id="undoButton"
+          class="bottom-button"
+          disabled
+        >
+          실행 취소 / UNDO
+        </button>
+
+
+        <button
+          type="button"
+          id="recaptureButton"
+          class="bottom-button"
+          disabled
+        >
+          다시 촬영 / RECAPTURE
+        </button>
+
+
+        <button
+          type="button"
+          id="registerButton"
+          class="bottom-button register-button"
+          disabled
+        >
+          표본 아카이브에 저장 / SAVE TO ARCHIVE →
+        </button>
+
+
+      </div>
+
+
+    </footer>
+
+
+  </main>
+
+
+  <div
+    class="glass-neon-cursor"
+    aria-hidden="true"
+  ></div>
+
+
+  <script src="receipt-print.js?v=archive-print-1"></script>
+  <script src="specimen-lab.js?v=archive-print-1"></script>
+
+
+</body>
+
+</html>

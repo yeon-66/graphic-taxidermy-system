@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROCESS — 박제</title>
+  <link rel="stylesheet" href="style.css?v=overview-3">
+</head>
+
+<body class="page page-process">
+  <header class="site-header">
+    <a href="index.html" class="site-logo"><span>표본 아카이브</span><small>SPECIMEN ARCHIVE</small></a>
+
+    <div class="header-meta">
+      <span>GRAPHIC TAXIDERMY SYSTEM</span>
+      <span>2026</span>
+    </div>
+
+    <button class="menu-button" type="button" aria-label="메뉴 열기">
+      MENU
+    </button>
+  </header>
+
+  <nav class="global-menu" aria-hidden="true">
+    <div class="menu-top">
+      <span>SPECIMEN ARCHIVE</span>
+
+      <button class="menu-close" type="button" aria-label="메뉴 닫기">
+        CLOSE
+      </button>
+    </div>
+
+    <div class="menu-content">
+      <div class="menu-index">
+        INDEX / 04
+      </div>
+
+      <ul class="menu-list">
+<li><a href="index.html"><span>01</span><strong>OVERVIEW</strong></a></li>
+<li><a href="combination.html"><span>02</span><strong>GRAPHIC COLLECTION</strong></a></li>
+<li class="menu-lab"><a href="specimen-lab.html"><span>03</span><strong>SPECIMEN LAB</strong><em>INTERACTIVE ↗</em></a></li>
+<li><a href="archive.html"><span>04</span><strong>SPECIMEN ARCHIVE</strong></a></li>
+</ul>
+    </div>
+  </nav>
+
+
+  <main class="page-main">
+    <section class="page-intro compact">
+      <div class="page-marker">02 / PROCESS</div>
+
+      <div>
+        <p class="eyebrow">PHYSICAL PROCEDURE → GRAPHIC RULE</p>
+        <h1>PROCESS</h1>
+        <a class="trait-section-link" href="#traits">특이형질 살펴보기 / EXPLORE TRAITS ↓</a>
+      </div>
+
+      <p class="page-intro-copy">
+        박제의 물리적 절차를 네 개의 그래픽 처리 규칙으로 변환한다. 왼쪽 단계 버튼을 선택해 각 과정의 논리를 확인할 수 있다.
+      </p>
+    </section>
+
+    <section class="workstation">
+      <aside class="process-navigation"><button class="process-button active" type="button" data-process="fix"><span>01</span><strong>FIX</strong><small>고정</small></button>
+<button class="process-button" type="button" data-process="expand"><span>02</span><strong>EXPAND</strong><small>전개</small></button>
+<button class="process-button" type="button" data-process="preserve"><span>03</span><strong>PRESERVE</strong><small>보존</small></button>
+<button class="process-button" type="button" data-process="trait"><span>04</span><strong>TRAIT</strong><small>특이형질</small></button>
+</aside>
+
+      <div class="workstation-canvas" data-process-visual="fix">
+        <div class="technical-grid"></div>
+
+        <div class="canvas-axis canvas-axis-x"></div>
+        <div class="canvas-axis canvas-axis-y"></div>
+
+        <div class="canvas-specimen media-placeholder">SPECIMEN / SP-001</div>
+
+        <div class="measurement measurement-x">X / 487.02</div>
+        <div class="measurement measurement-y">Y / 291.48</div>
+
+        <div class="process-pins">
+          <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+
+      <aside class="process-panel">
+        <div class="panel-heading">
+          <span>CURRENT PROCESS</span>
+          <strong id="processName">FIX / 고정</strong>
+        </div>
+
+        <dl>
+          <div>
+            <dt>FAMILY</dt>
+            <dd>SATURNIIDAE</dd>
+          </div>
+
+          <div>
+            <dt>SOURCE</dt>
+            <dd>BITMAP</dd>
+          </div>
+
+          <div>
+            <dt>PROCESS</dt>
+            <dd id="processNumber">01 / 04</dd>
+          </div>
+
+          <div>
+            <dt>STATUS</dt>
+            <dd>ACTIVE</dd>
+          </div>
+        </dl>
+
+        <div class="process-metrics"><span>STRUCTURE</span><div><i style="width:72%"></i></div><span>SURFACE</span><div><i style="width:48%"></i></div><span>VARIATION</span><div><i style="width:26%"></i></div></div>
+      </aside>
+
+      <div class="process-log">
+        <span>PROCESS LOG</span>
+        <p id="processDescription">
+          형태의 기준점을 지정하고 원본 이미지의 구조를 고정합니다.
+        </p>
+      </div>
+    </section>
+
+
+    <section class="integrated-traits" id="traits" aria-labelledby="traitsHeading">
+      <div class="traits-intro"><p class="eyebrow">PROCESS / MORPHOLOGICAL TRAITS</p><h2 id="traitsHeading">특이형질 / TRAITS</h2><p>고정·전개·보존을 거친 형태에 남은 차이를 기록한다. 색의 변화, 비대칭, 패턴 소실과 형태 변형은 새로운 그래픽 조합의 재료가 된다.</p></div>
+<section class="traits-list"><article class="trait-row interactive-card"><div class="trait-index">01</div><div class="trait-name"><span>TRAIT</span><h2>COLOR VARIATION</h2></div><div class="trait-image media-placeholder">IMAGE / COLOR</div><p>색의 농도, 소실, 치환에서 발생하는 차이를 기록한다.</p></article><article class="trait-row interactive-card"><div class="trait-index">02</div><div class="trait-name"><span>TRAIT</span><h2>ASYMMETRY</h2></div><div class="trait-image media-placeholder">IMAGE / ASYMMETRY</div><p>좌우의 구조적 차이와 비대칭성을 별도의 형태 정보로 추출한다.</p></article><article class="trait-row interactive-card"><div class="trait-index">03</div><div class="trait-name"><span>TRAIT</span><h2>PATTERN LOSS</h2></div><div class="trait-image media-placeholder">IMAGE / PATTERN</div><p>무늬의 소실과 증가, 끊김을 패턴 데이터로 전환한다.</p></article><article class="trait-row interactive-card"><div class="trait-index">04</div><div class="trait-name"><span>TRAIT</span><h2>FORM DEFORMATION</h2></div><div class="trait-image media-placeholder">IMAGE / FORM</div><p>외곽선의 변형과 비정상적 비율을 새로운 조형 규칙으로 축적한다.</p></article></section>
+    </section>
+
+    <div class="page-next">
+      <span>NEXT RECORD</span>
+      <a href="combination.html">GRAPHIC COLLECTION →</a>
+    </div>
+  </main>
+
+  <div class="glass-neon-cursor" aria-hidden="true"></div>
+  <script src="script.js?v=names-1"></script>
+
+</body>
+</html>
